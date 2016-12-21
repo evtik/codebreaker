@@ -1,5 +1,5 @@
-require "codebreaker/version"
-
-module Codebreaker
-  # Your code goes here...
-end
+require 'codebreaker/version'
+require 'codebreaker/game'
+require 'codebreaker/console'
+require 'codebreaker/reporter'
+require 'codebreaker/saver'
