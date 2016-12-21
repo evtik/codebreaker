@@ -9,9 +9,14 @@ module Codebreaker
     def submit_guess(guess)
       guess, code = guess.chars.zip(@code.chars)
         .select { |e| e[0] != e[1] }.transpose
-      result = '' << '+' * (4 - code.length)
-      result << '-' * guess.product(code.map.with_index { |e, i| [i, e] })
-        .select { |e| e[0] == e[1][1] }.uniq { |e| [e[1][0], e[1][1]] }.length
+      result = '' << '+' * (4 - code.size)
+      guess.each do |e|
+        digit_index = code.index(e)
+        next unless digit_index
+        result << '-'
+        code.delete_at(digit_index)
+      end
+      result
     end
 
     def hint
